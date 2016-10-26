@@ -1,0 +1,38 @@
+{
+  "name": "eve-react",
+  "version": "0.0.1",
+  "description": "eve-react React components pack",
+  "main": "lib/index.js",
+  "jsnext:main": "es/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component",
+    "clean": "nwb clean-module && npm clean-demo",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test",
+    "test:coverage": "nwb test --coverage",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "15.x"
+  },
+  "devDependencies": {
+    "nwb": "0.12.x",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "author": "Evoluchain",
+  "homepage": "https://www.evoluchain.com",
+  "license": "MIT",
+  "repository": "https://github.com/evoluchain/eve-react",
+  "keywords": [
+    "react-component"
+  ]
+}
