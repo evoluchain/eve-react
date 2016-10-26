@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 
 import Web3Info_ from './Web3Info'
 
-export const toto = 'TOTO'
-
 export default class Eve extends Component {
   render() {
     return <div>
@@ -12,8 +10,4 @@ export default class Eve extends Component {
   }
 }
 
-export class Web3Info extends Web3Info_ {
-  constructor() {
-      super();
-    }
-}
+export class Web3Info extends Web3Info_ {}
