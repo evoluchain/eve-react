@@ -12,4 +12,8 @@ export default class Eve extends Component {
   }
 }
 
-export class Web3Info extends Web3Info_ {}
+export class Web3Info extends Web3Info_ {
+  constructor() {
+      super();
+    }
+}

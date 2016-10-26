@@ -6,6 +6,7 @@ export default class Web3Info extends React.Component {
         let version = '';
         // Checking if Web3 has been injected by the browser (Mist/MetaMask)
         if (typeof web3 !== 'undefined') {
+          console.log("web3.version", web3.version)
             version = web3.version.api;
         } else {
             console.log('No web3? You should consider trying MetaMask!');

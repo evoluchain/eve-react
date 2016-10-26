@@ -8,7 +8,7 @@ let Demo = React.createClass({
     return <div>
       <h1>eve-react Demo</h1>
       <Eve/>{toto}TOTO
-      <Web3Info/>
+      <Web3Info web3={window.web3}/>
     </div>
   }
 })
