@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import Web3Info_ from './Web3Info'
+import _Web3Info from './Web3Info'
 
 export default class Eve extends Component {
   render() {
@@ -10,4 +10,4 @@ export default class Eve extends Component {
   }
 }
 
-export class Web3Info extends Web3Info_ {}
+export {_Web3Info as Web3Info}
