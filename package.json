@@ -21,12 +21,14 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "15.x"
+    "react": "15.x",
+    "web3": "*"
   },
   "devDependencies": {
     "nwb": "0.12.x",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "web3": "^0.17.0-beta"
   },
   "author": "Evoluchain",
   "homepage": "https://evoluchain.com",
