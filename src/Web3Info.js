@@ -7,6 +7,8 @@ export default class Web3Info extends React.Component {
         super()
         this.getInfos = this.getInfos.bind(this)
         this.state = {
+            apiVersion:"",
+            nodeVersion: "",
             coinbase: ""
         }
     }
@@ -14,23 +16,27 @@ export default class Web3Info extends React.Component {
     getInfos() {
         //TODO : make it the ES6 way
         var that = this
-        web3.eth.getCoinbase(function (err, val) {
-            that.setState({coinbase: val})
+        web3.eth.getCoinbase(function (error, result) {
+            that.setState({coinbase: result})
         })
+        web3.version.getNode(function (error, result) {
+            that.setState({nodeVersion: result})
+        })
+        that.setState({apiVersion: web3.version.api})
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.getInfos()
     }
 
     render() {
-        const message = web3.version.api ? web3.version.api : ""
-        const {coinbase} = this.state
+        const {apiVersion, nodeVersion, coinbase} = this.state
         return (
             <div>
                 <h3>Web3 Info</h3>
                 <div>coinbase:{coinbase}</div>
-                <div>{message}</div>
+                <div>api version:{apiVersion}</div>
+                <div>node version:{nodeVersion}</div>
             </div>
         );
     }
