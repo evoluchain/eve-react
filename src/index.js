@@ -7,22 +7,10 @@ export default class Eve extends Component {
 
     constructor() {
         super()
-        this.getInfos = this.getInfos.bind(this)
         this.isNotConnected = this.isNotConnected.bind(this)
         this.state = {
             coinbase: ""
         }
-    }
-
-    componentWillMount(){
-        this.getInfos()
-    }
-
-    getInfos() {
-        var that = this
-        web3.eth.getCoinbase(function (err, val) {
-            that.setState({coinbase: val})
-        })
     }
 
     isNotConnected(){
@@ -35,10 +23,7 @@ export default class Eve extends Component {
     }
 
     render() {
-        const {coinbase} = this.state
         return <div>
-            <h2>Welcome to Eve React components pack</h2>
-            <p>{coinbase}</p>
             {this.isNotConnected() || this.props.children}
         </div>
     }
