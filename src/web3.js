@@ -1,12 +1,12 @@
 /**
- * This web3.js is a web3 wrapper for eve-react
+ * This web3.js is a web3 wrapper/init for eve-react
 * */
 import Web3 from 'web3'
 
 function initWeb3() {
     if (typeof window.web3 !== 'undefined') {
         console.log("web3 found")
-        web3 = new Web3(web3.currentProvider);
+        window.web3 = new Web3(window.web3.currentProvider);
     } else {
         // set the provider you want from Web3.providers
         console.log("web3 NOT found")
@@ -14,5 +14,6 @@ function initWeb3() {
     }
 }
 initWeb3()
+var web3 = window.web3
 
-console.log("web3js:defaultAccount", window.web3.eth.defaultAccount)
+export {web3 as web3}

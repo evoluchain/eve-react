@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Web3 from './web3'
+import {web3} from './web3'
 
 import _Web3Info from './Web3Info'
 
@@ -13,7 +13,7 @@ export default class Eve extends Component {
         }
         this.getInfos()
     }
-    
+
     getInfos() {
         var that = this
         web3.eth.getCoinbase(function (err, val) {
