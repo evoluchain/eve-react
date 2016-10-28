@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import web3 from './web3'
 
 import _Web3Info from './Web3Info'
+import _Account from './Account'
 
 export default class Eve extends Component {
 
@@ -27,3 +28,4 @@ export default class Eve extends Component {
 }
 
 export {_Web3Info as Web3Info}
+export {_Account as Account}
