@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 
-import Eve, {Web3Info, Account} from '../../src'
+import Eve, {Web3Info, Account, Balance} from '../../src'
 
 let Demo = React.createClass({
     render() {
@@ -12,6 +12,11 @@ let Demo = React.createClass({
 
                 <div>Account</div>
                 <Account account="0x1ead39fe991df9efd8c279c13c6f101155640569"/>
+
+                <div>Balance</div>
+                <Balance balance="0x1ead39fe991df9efd8c279c13c6f101155640569"/>
+
+
             </Eve>
         </div>
     }
