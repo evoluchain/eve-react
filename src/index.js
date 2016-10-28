@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {web3} from './web3'
+import web3 from './web3'
 
 import _Web3Info from './Web3Info'
 
