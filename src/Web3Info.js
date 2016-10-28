@@ -7,8 +7,10 @@ export default class Web3Info extends React.Component {
         super()
         this.getInfos = this.getInfos.bind(this)
         this.state = {
-            apiVersion:"",
+            apiVersion: "",
             nodeVersion: "",
+            networkVersion: "",
+            ethVersion: "",
             coinbase: ""
         }
     }
@@ -23,6 +25,9 @@ export default class Web3Info extends React.Component {
             that.setState({nodeVersion: result})
         })
         that.setState({apiVersion: web3.version.api})
+        web3.version.getNetwork(function (error, result) {
+            that.setState({networkVersion: result})
+        })
     }
 
     componentWillMount() {
@@ -30,13 +35,14 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, coinbase} = this.state
+        const {apiVersion, nodeVersion, networkVersion, ethVersion, coinbase} = this.state
         return (
             <div>
                 <h3>Web3 Info</h3>
-                <div>coinbase:{coinbase}</div>
-                <div>api version:{apiVersion}</div>
-                <div>node version:{nodeVersion}</div>
+                <div>coinbase : {coinbase}</div>
+                <div>api version : {apiVersion}</div>
+                <div>node version : {nodeVersion}</div>
+                <div>networkVersion : {networkVersion}</div>
             </div>
         );
     }
