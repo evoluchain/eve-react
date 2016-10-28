@@ -8,9 +8,6 @@ export default class Eve extends Component {
     constructor() {
         super()
         this.isNotConnected = this.isNotConnected.bind(this)
-        this.state = {
-            coinbase: ""
-        }
     }
 
     isNotConnected(){
