@@ -26,6 +26,7 @@ export default class Eve extends Component {
         return <div>
             <h2>Welcome to Eve React components pack</h2>
             <p>{coinbase}</p>
+            {this.props.children}
         </div>
     }
 }
