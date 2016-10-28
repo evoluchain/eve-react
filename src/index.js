@@ -11,6 +11,7 @@ export default class Eve extends Component {
         this.state = {
             coinbase: ""
         }
+        this.initWeb3()
         this.getInfos()
     }
 
@@ -26,13 +27,11 @@ export default class Eve extends Component {
     getInfos() {
         var that = this
         web3.eth.getCoinbase(function (err, val) {
-            console.log("val", val)
             that.setState({coinbase: val})
         })
     }
 
     render() {
-        this.initWeb3()
         const {coinbase} = this.state
         return <div>
             <h2>Welcome to Eve React components pack</h2>
