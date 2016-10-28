@@ -5,6 +5,15 @@ import _Web3Info from './Web3Info'
 
 export default class Eve extends Component {
 
+    constructor() {
+        super()
+        this.getInfos = this.getInfos.bind(this)
+        this.state = {
+            coinbase: ""
+        }
+        this.getInfos()
+    }
+
     initWeb3() {
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
@@ -14,9 +23,17 @@ export default class Eve extends Component {
         }
     }
 
+    getInfos() {
+        var that = this
+        web3.eth.getCoinbase(function (err, val) {
+            console.log("val", val)
+            that.setState({coinbase: val})
+        })
+    }
+
     render() {
         this.initWeb3()
-        const coinbase = web3.eth.coinbase
+        const {coinbase} = this.state
         return <div>
             <h2>Welcome to Eve React components pack</h2>
             <p>{coinbase}</p>
