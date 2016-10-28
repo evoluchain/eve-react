@@ -8,7 +8,7 @@ export default class Balance extends React.Component {
     render() {
         const {balance} = this.props;
         return (
-            <div> {balance} </div>
+            <div>{balance}</div>
         );
     }
 }

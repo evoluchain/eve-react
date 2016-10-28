@@ -8,7 +8,7 @@ export default class Account extends React.Component {
     render() {
         const {account} = this.props;
         return (
-            <div> {account} </div>
+            <div>{account}</div>
         );
     }
 }
