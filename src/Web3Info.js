@@ -5,12 +5,10 @@ export default class Web3Info extends React.Component {
 
     constructor() {
         super()
-        //this.getInfos = this.getInfos.bind(this)
         this.state = {
             apiVersion: "",
             nodeVersion: "",
             networkVersion: "",
-            ethVersion: "",
             coinbase: ""
         }
     }
@@ -58,7 +56,7 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, networkVersion, ethVersion, coinbase} = this.state
+        const {apiVersion, nodeVersion, networkVersion, coinbase} = this.state
         return (
             <div>
                 <h3>Web3 Info</h3>
