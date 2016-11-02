@@ -1,7 +1,7 @@
 # eve-react
 
 [![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
+[![npm package](https://img.shields.io/npm/v/eve-react.svg?style=flat-square)](https://www.npmjs.com/package/eve-react)
 [![Coveralls][coveralls-badge]][coveralls]
 
 Describe eve-react here.
