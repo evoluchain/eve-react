@@ -2,6 +2,7 @@ import React from 'react'
 import web3 from './web3'
 
 import Account from './Account'
+import Balance from './Balance'
 
 export default class Web3Info extends React.Component {
 
@@ -11,7 +12,7 @@ export default class Web3Info extends React.Component {
             apiVersion: "",
             nodeVersion: "",
             networkVersion: "",
-            coinbase: ""
+            coinbase: null
         }
     }
 
@@ -48,9 +49,11 @@ export default class Web3Info extends React.Component {
                 coinbase,
                 nodeVersion,
                 networkVersion,
-                apiVersion : web3.version.api
+                apiVersion: web3.version.api
             })
-        }, _error => { console.error(_error) })
+        }, _error => {
+            console.error(_error)
+        })
     }
 
     componentWillMount() {
@@ -63,6 +66,8 @@ export default class Web3Info extends React.Component {
             <div>
                 <h3>Web3 Info</h3>
                 <div>Account:<Account account={coinbase}/></div>
+                <div>Balance:<Balance account={coinbase}/></div>
+                <p/>
                 <div>api version : {apiVersion}</div>
                 <div>node version : {nodeVersion}</div>
                 <div>networkVersion : {networkVersion}</div>

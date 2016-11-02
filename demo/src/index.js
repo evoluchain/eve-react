@@ -9,14 +9,6 @@ let Demo = React.createClass({
             <h1>eve-react Demo</h1>
             <Eve>
                 <Web3Info/>
-
-                <div>Account</div>
-                <Account account="0x1ead39fe991df9efd8c279c13c6f101155640569"/>
-
-                <div>Balance</div>
-                <Balance balance="0x1ead39fe991df9efd8c279c13c6f101155640569"/>
-
-
             </Eve>
         </div>
     }
