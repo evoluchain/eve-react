@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import web3 from './web3'
 
-import _Web3Info from './Web3Info'
-import _Account from './Account'
-import  _Balance from './Balance'
+import Web3Info from './Web3Info'
+import Account from './Account'
+import Balance from './Balance'
 
 export default class Eve extends Component {
 
@@ -12,8 +12,8 @@ export default class Eve extends Component {
         this.isNotConnected = this.isNotConnected.bind(this)
     }
 
-    isNotConnected(){
-        if(web3.isConnected()){
+    isNotConnected() {
+        if (web3.isConnected()) {
             return false
         }
         else {
@@ -28,6 +28,6 @@ export default class Eve extends Component {
     }
 }
 
-export {_Web3Info as Web3Info}
-export {_Account as Account}
-export {_Balance as Balance}
+export {Web3Info as Web3Info}
+export {Account as Account}
+export {Balance as Balance}
