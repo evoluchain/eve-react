@@ -73,7 +73,7 @@ export default class Web3Info extends React.Component {
     render() {
         const {apiVersion, nodeVersion, networkVersion, coinbase, accounts} = this.state
         const accountsComponents = accounts.map((account) => {
-            return <p><Account key={account} account={account}/></p>;
+            return <div key={account}><Account account={account}/> - <Balance account={account}/></div>;
         });
         return (
             <div>
