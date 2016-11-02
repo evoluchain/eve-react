@@ -12,7 +12,8 @@ export default class Web3Info extends React.Component {
             apiVersion: "",
             nodeVersion: "",
             networkVersion: "",
-            coinbase: null
+            coinbase: null,
+            accounts: ['']
         }
     }
 
@@ -41,14 +42,23 @@ export default class Web3Info extends React.Component {
                 resolve(result)
             })
         })
+        const accountsPromise = new Promise((resolve, reject) => {
+            web3.eth.getAccounts((error, result) => {
+                if (error) {
+                    return reject(error)
+                }
+                resolve(result)
+            })
+        })
 
-        const allReady = Promise.all([coinbasePromise, nodePromise, networkPromise])
+        const allReady = Promise.all([coinbasePromise, nodePromise, networkPromise, accountsPromise])
         allReady.then(results => {
-            const [ coinbase, nodeVersion, networkVersion ] = results
+            const [ coinbase, nodeVersion, networkVersion, accounts ] = results
             this.setState({
                 coinbase,
                 nodeVersion,
                 networkVersion,
+                accounts,
                 apiVersion: web3.version.api
             })
         }, _error => {
@@ -61,12 +71,18 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, networkVersion, coinbase} = this.state
+        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts} = this.state
+        const accountsComponents = accounts.map((account) => {
+            return <p><Account key={account} account={account}/></p>;
+        });
         return (
             <div>
                 <h3>Web3 Info</h3>
-                <div>Account:<Account account={coinbase}/></div>
+                <div>Coinbase:<Account account={coinbase}/></div>
                 <div>Balance:<Balance account={coinbase}/></div>
+                <p/>
+                <div>Accounts list</div>
+                {accountsComponents}
                 <p/>
                 <div>api version : {apiVersion}</div>
                 <div>node version : {nodeVersion}</div>
