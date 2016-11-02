@@ -1,6 +1,8 @@
 import React from 'react'
 import web3 from './web3'
 
+import Account from './Account'
+
 export default class Web3Info extends React.Component {
 
     constructor() {
@@ -60,7 +62,7 @@ export default class Web3Info extends React.Component {
         return (
             <div>
                 <h3>Web3 Info</h3>
-                <div>coinbase : {coinbase}</div>
+                <div>Account:<Account account={coinbase}/></div>
                 <div>api version : {apiVersion}</div>
                 <div>node version : {nodeVersion}</div>
                 <div>networkVersion : {networkVersion}</div>
