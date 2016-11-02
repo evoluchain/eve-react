@@ -2,14 +2,19 @@ import React from "react";
 import web3 from './web3'
 
 export default class Balance extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props)
         this.state = {
             balance: null
         }
     }
 
-    componentDidMount(){
+    static defaultProps = {
+        account: null,
+        unit: 'ether'
+    }
+
+    componentDidMount() {
         this.getBalance.apply(this, [this.props.account])
     }
 
@@ -18,7 +23,7 @@ export default class Balance extends React.Component {
     }
 
     getBalance(account) {
-        if(!account) {
+        if (!account) {
             return
         }
 
@@ -43,8 +48,9 @@ export default class Balance extends React.Component {
 
     render() {
         const {balance} = this.state
+        const {unit} = this.props
         return (
-            <span>{balance}</span>
+            <span>{web3.fromWei(balance, unit)} {unit}</span>
         );
     }
 }
