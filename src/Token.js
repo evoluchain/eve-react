@@ -46,7 +46,6 @@ export default class Token extends React.Component {
 
            const symbolPromise = new Promise((resolve, reject) => {
                 contract.symbol.call((error, result) => {
-                    console.log('symbolPromise', error, result)
                     if (error) {
                         return reject(error)
                     }
@@ -54,13 +53,33 @@ export default class Token extends React.Component {
                 })
             })
 
-            const allReady = Promise.all([balancePromise, symbolPromise])
+            const namePromise = new Promise((resolve, reject) => {
+                contract.name.call((error, result) => {
+                    if (error) {
+                        return reject(error)
+                    }
+                    resolve(result)
+                })
+            })
+
+            const decimalsPromise = new Promise((resolve, reject) => {
+                contract.decimals.call((error, result) => {
+                    if (error) {
+                        return reject(error)
+                    }
+                    resolve(result)
+                })
+            })
+
+            const allReady = Promise.all([balancePromise, symbolPromise, namePromise, decimalsPromise])
 
             allReady.then(results => {
-                const [ balance, symbol ] = results
+                const [ balance, symbol, name, decimals ] = results
                 this.setState({
                     balance: balance.valueOf(),
-                    symbol
+                    symbol,
+                    name,
+                    decimals:decimals.valueOf()
                 })
             }, _error => {
                 console.error(_error)
