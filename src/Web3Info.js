@@ -76,7 +76,6 @@ export default class Web3Info extends React.Component {
         const accountsComponents = accounts.map((account) => {
             return <div key={account}><Account account={account}/> - <Balance account={account}/></div>;
         })
-        //<div>Token (prod):<Token address='0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7' account={coinbase}/></div>
         return (
             <div>
                 <h3>Web3 Info</h3>
@@ -84,7 +83,7 @@ export default class Web3Info extends React.Component {
                 <div>Balance:<Balance account={coinbase}/></div>
                 <p/>
 
-
+                <div>Token (prod):<Token address='0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7' account={coinbase}/></div>
                 <div>Token (morden):<Token address='0x0a0960358dc58391b8a72062efe84201b47075c4' account={coinbase}/></div>
                 <p/>
 
