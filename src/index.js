@@ -17,7 +17,7 @@ export default class Eve extends Component {
             return false
         }
         else {
-            return <dev>Not connected, make sure to use a web3 enebled browser like Mist or Metamask</dev>
+            return <dev>Not connected, make sure to use a web3 enabled browser like Mist or Metamask</dev>
         }
     }
 
