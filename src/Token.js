@@ -43,13 +43,24 @@ export default class Token extends React.Component {
                     resolve(result)
                 })
             })
-            
-            const allReady = Promise.all([balancePromise])
+
+           const symbolPromise = new Promise((resolve, reject) => {
+                contract.symbol.call((error, result) => {
+                    console.log('symbolPromise', error, result)
+                    if (error) {
+                        return reject(error)
+                    }
+                    resolve(result)
+                })
+            })
+
+            const allReady = Promise.all([balancePromise, symbolPromise])
 
             allReady.then(results => {
-                const [ balance ] = results
+                const [ balance, symbol ] = results
                 this.setState({
-                    balance: balance.valueOf()
+                    balance: balance.valueOf(),
+                    symbol
                 })
             }, _error => {
                 console.error(_error)
@@ -59,10 +70,10 @@ export default class Token extends React.Component {
     }
 
     render() {
-        const {balance} = this.state
+        const {balance, symbol} = this.state
         const {address, account} = this.props
         return (
-            <span>address:{address} - account:{account} - balance:{balance}</span>
+            <span>address:{address} - account:{account} - balance:{balance} {symbol}</span>
         );
     }
 }
