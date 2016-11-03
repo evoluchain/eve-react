@@ -34,12 +34,27 @@ export default class Token extends React.Component {
 
     getBalance(contract, account) {
         if (contract && account) {
-            const that = this
-            contract.balanceOf.call(account, function (error, balance) {
-                that.setState({
-                    balance: balance.valueOf()
+
+            const balancePromise = new Promise((resolve, reject) => {
+                contract.balanceOf.call(account, (error, result) => {
+                    if (error) {
+                        return reject(error)
+                    }
+                    resolve(result)
                 })
             })
+            
+            const allReady = Promise.all([balancePromise])
+
+            allReady.then(results => {
+                const [ balance ] = results
+                this.setState({
+                    balance: balance.valueOf()
+                })
+            }, _error => {
+                console.error(_error)
+            })
+
         }
     }
 
