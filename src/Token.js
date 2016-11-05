@@ -1,5 +1,5 @@
 import React from "react"
-import tokenContract from './TokenContract'
+import tokenContract from './Token/TokenContract'
 
 export default class Token extends React.Component {
     constructor(props) {
