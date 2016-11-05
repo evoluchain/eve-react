@@ -44,7 +44,7 @@ export default class Token extends React.Component {
                 })
             })
 
-           const symbolPromise = new Promise((resolve, reject) => {
+            const symbolPromise = new Promise((resolve, reject) => {
                 contract.symbol.call((error, result) => {
                     if (error) {
                         return reject(error)
@@ -79,7 +79,7 @@ export default class Token extends React.Component {
                     balance: balance.valueOf(),
                     symbol,
                     name,
-                    decimals:decimals.valueOf()
+                    decimals: decimals.valueOf()
                 })
             }, _error => {
                 console.error(_error)
@@ -91,8 +91,21 @@ export default class Token extends React.Component {
     render() {
         const {balance, symbol} = this.state
         const {address, account} = this.props
+
+        const childrenWithProps = React.Children.map(this.props.children,
+            (child) => React.cloneElement(child, {
+                account: account,
+                balance: balance,
+                symbol: symbol,
+                address: address,
+            })
+        )
+
         return (
-            <span>address:{address} - account:{account} - balance:{balance} {symbol}</span>
-        );
+            <div>
+                <span>address:{address} - account:{account} - balance:{balance} {symbol}</span>
+                <span>{childrenWithProps}</span>
+            </div>
+        )
     }
 }
