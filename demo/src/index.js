@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 
-import Eve, {Web3Info, Account, Balance} from '../../src'
+import Eve, {Web3Info} from '../../src'
 
 let Demo = React.createClass({
     render() {
