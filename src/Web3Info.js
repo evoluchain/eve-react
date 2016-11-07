@@ -4,6 +4,7 @@ import web3 from './web3'
 import Account from './Account'
 import Balance from './Balance'
 import Token from './Token'
+import Symbol from './Token/Symbol'
 
 export default class Web3Info extends React.Component {
 
@@ -86,20 +87,17 @@ export default class Web3Info extends React.Component {
                 <div>Token (prod):
                     <Token address='0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7'
                            account={coinbase}/>
-                </div>
-
-                <div>Token (morden):
-                    <Token address='0x0a0960358dc58391b8a72062efe84201b47075c4'
-                           account={coinbase}>
-                        <Account/>
-                    </Token>
+                    <div>Account:</div><Account/>
+                    <div>Balance:</div><Balance/>
+                    <div>Symbol:</div><Symbol/>
                 </div>
 
                 <div>Token (morden + children):
                     <Token address='0x0a0960358dc58391b8a72062efe84201b47075c4'
                            account={coinbase}>
-                        <div>Account:</div>
-                        <Account/>
+                        <div>Account:</div><Account/>
+                        <div>Balance:</div><Balance/>
+                        <div>Symbol:</div><Symbol/>
                     </Token>
                 </div>
 

@@ -102,10 +102,9 @@ export default class Token extends React.Component {
         )
 
         return (
-            <div>
-                <span>address:{address} - account:{account} - balance:{balance} {symbol}</span>
-                <span>{childrenWithProps}</span>
-            </div>
+            <span>
+                {childrenWithProps}
+            </span>
         )
     }
 }
