@@ -1,6 +1,6 @@
 import React from "react"
 
-export default class Balance extends React.Component {
+export default class TokenBalance extends React.Component {
     constructor(props) {
         super(props)
     }

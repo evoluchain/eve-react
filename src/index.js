@@ -7,6 +7,8 @@ import Account from './Account'
 import Balance from './Balance'
 
 import Token from './Token'
+import TokenSymbol from './TokenSymbol'
+import TokenBalance from './TokenBalance'
 
 export default class Eve extends Component {
 
@@ -36,3 +38,5 @@ export {Web3Info as Web3Info}
 export {Account as Account}
 export {Balance as Balance}
 export {Token as Token}
+export {TokenSymbol as TokenSymbol}
+export {TokenBalance as TokenBalance}

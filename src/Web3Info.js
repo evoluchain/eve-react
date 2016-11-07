@@ -4,8 +4,8 @@ import web3 from './web3'
 import Account from './Account'
 import Balance from './Balance'
 import Token from './Token'
-import Symbol from './Token/Symbol'
-import TBalance from './Token/Balance'
+import TokenSymbol from './TokenSymbol'
+import TokenBalance from './TokenBalance'
 
 export default class Web3Info extends React.Component {
 
@@ -74,7 +74,7 @@ export default class Web3Info extends React.Component {
                 networkVersion,
                 accounts,
                 apiVersion: web3.version.api,
-                tokenAddresse: this.getTokenAddress(networkVersion)
+                tokenAddress: this.getTokenAddress(networkVersion)
             })
         }, _error => {
             console.error(_error)
@@ -86,7 +86,7 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts, tokenAddresse} = this.state
+        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts, tokenAddress} = this.state
         const accountsComponents = accounts.map((account) => {
             return <div key={account}><Account account={account}/> - <Balance account={account}/></div>;
         })
@@ -98,14 +98,14 @@ export default class Web3Info extends React.Component {
                 <p/>
 
                 <div>Token:
-                    <Token address={tokenAddresse}
+                    <Token address={tokenAddress}
                            account={coinbase}>
                         <span> Account: </span>
                         <Account/>
                         <span> - Balance: </span>
-                        <TBalance/>
+                        <TokenBalance/>
                         <span> - Symbol: </span>
-                        <Symbol/>
+                        <TokenSymbol/>
                     </Token>
                 </div>
 

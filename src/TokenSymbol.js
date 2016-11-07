@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Symbol extends React.Component {
+export default class TokenSymbol extends React.Component {
     render() {
         const {symbol} = this.props
         return (
