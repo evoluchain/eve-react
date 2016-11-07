@@ -28,6 +28,7 @@ export default class Eve extends Component {
     }
 }
 
+export {web3 as web3}
 export {Web3Info as Web3Info}
 export {Account as Account}
 export {Balance as Balance}
