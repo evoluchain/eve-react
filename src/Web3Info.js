@@ -20,6 +20,17 @@ export default class Web3Info extends React.Component {
         }
     }
 
+    getTokenAddress(networkVersion) {
+        switch(networkVersion){
+            case '1' :
+                return '0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7'
+            case '2' :
+                return '0x0a0960358dc58391b8a72062efe84201b47075c4'
+            default:
+                return null
+        }
+    }
+
     getInfos() {
         const coinbasePromise = new Promise((resolve, reject) => {
             web3.eth.getCoinbase((error, result) => {
@@ -62,7 +73,8 @@ export default class Web3Info extends React.Component {
                 nodeVersion,
                 networkVersion,
                 accounts,
-                apiVersion: web3.version.api
+                apiVersion: web3.version.api,
+                tokenAddresse: this.getTokenAddress(networkVersion)
             })
         }, _error => {
             console.error(_error)
@@ -74,7 +86,7 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts} = this.state
+        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts, tokenAddresse} = this.state
         const accountsComponents = accounts.map((account) => {
             return <div key={account}><Account account={account}/> - <Balance account={account}/></div>;
         })
@@ -85,20 +97,15 @@ export default class Web3Info extends React.Component {
                 <div>Balance:<Balance account={coinbase}/></div>
                 <p/>
 
-                <div>Token (prod):
-                    <Token address='0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7'
-                           account={coinbase}/>
-                    <div>Account:</div><Account/>
-                    <div>Balance:</div><TBalance/>
-                    <div>Symbol:</div><Symbol/>
-                </div>
-
-                <div>Token (morden + children):
-                    <Token address='0x0a0960358dc58391b8a72062efe84201b47075c4'
+                <div>Token:
+                    <Token address={tokenAddresse}
                            account={coinbase}>
-                        <div>Account:</div><Account/>
-                        <div>Balance:</div><TBalance/>
-                        <div>Symbol:</div><Symbol/>
+                        <span> Account: </span>
+                        <Account/>
+                        <span> - Balance: </span>
+                        <TBalance/>
+                        <span> - Symbol: </span>
+                        <Symbol/>
                     </Token>
                 </div>
 
