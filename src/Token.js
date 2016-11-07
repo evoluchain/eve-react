@@ -92,6 +92,7 @@ export default class Token extends React.Component {
         const {balance, symbol} = this.state
         const {address, account} = this.props
 
+        //TODO : use React.Children.isReactComponent()
         const childrenWithProps = React.Children.map(this.props.children,
             (child) => React.cloneElement(child, {
                 account: account,
