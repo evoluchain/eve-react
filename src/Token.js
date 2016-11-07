@@ -1,5 +1,12 @@
-import React from "react"
+import React from 'react'
+
 import tokenContract from './Token/TokenContract'
+import Balance from './Token/Balance'
+import Symbol from './Token/Symbol'
+
+export {tokenContract as tokenContract}
+export {Balance as Balance}
+export {Symbol as Symbol}
 
 export default class Token extends React.Component {
     constructor(props) {
