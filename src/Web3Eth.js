@@ -78,6 +78,7 @@ export default class Web3Eth extends React.Component {
                 })
             })
         }
+
         // Case for get methods with params
         else if (getMethodsParam.includes(method) && address) {
             const methodCall = 'get' + _method
@@ -90,6 +91,21 @@ export default class Web3Eth extends React.Component {
                 })
             })
         }
+
+        // Case for is methods
+        else if (isMethods.includes(method) && address) {
+            const methodCall = 'is' + _method
+            return new Promise((resolve, reject) => {
+                web3.eth[methodCall]((error, result) => {
+                    console.log('isMethods', methodCall)
+                    if (error) {
+                        return reject(error)
+                    }
+                    resolve(result)
+                })
+            })
+        }
+
         else
             return null
     }
@@ -98,6 +114,7 @@ export default class Web3Eth extends React.Component {
         const ethPromise = this.getPromise()
         if (ethPromise) {
             ethPromise.then(result => {
+                console.log('result', result)
                 this.setState({
                     result
                 })

@@ -139,7 +139,7 @@ export default class Web3Info extends React.Component {
                     <Web3Eth method='gasPrice'>
                         {({error, result}) => {
                             return <div>
-                                <div>gasPrice : {result}</div>
+                                <div>gasPrice : {result ? result.toString() : 'null'}</div>
                             </div>
                         }}
                     </Web3Eth>
@@ -149,7 +149,7 @@ export default class Web3Info extends React.Component {
                     <Web3Eth method='hashrate'>
                         {({error, result}) => {
                             return <div>
-                                <div>hashrate : {result}</div>
+                                <div>hashrate : {result ? result.toString() : 'null'}</div>
                             </div>
                         }}
                     </Web3Eth>
