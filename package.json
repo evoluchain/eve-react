@@ -25,6 +25,7 @@
     "web3": "*"
   },
   "devDependencies": {
+    "lodash": "^4.16.6",
     "nwb": "0.12.x",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
