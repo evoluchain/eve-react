@@ -40,8 +40,6 @@ export default class Web3Eth extends React.Component {
 
     static defaultProps = {
         method: 'coinbase',
-        params: {},
-        address: null,
     }
 
     state = {
@@ -50,17 +48,17 @@ export default class Web3Eth extends React.Component {
     }
 
     componentDidMount() {
-        this.fetch()
+        this.fetch(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props, nextProps)) {
-            this.fetch()
+            this.fetch(nextProps)
         }
     }
 
-    getPromise() {
-        const {method, address} = this.props
+    getPromise(props) {
+        const {method, address} = props
 
         // Start with uppercase
         const _method = _.startCase(method).replace(/\s/g, "")
@@ -110,8 +108,8 @@ export default class Web3Eth extends React.Component {
             return null
     }
 
-    fetch() {
-        const ethPromise = this.getPromise()
+    fetch(props) {
+        const ethPromise = this.getPromise(props)
         if (ethPromise) {
             ethPromise.then(result => {
                 console.log('result', result)
