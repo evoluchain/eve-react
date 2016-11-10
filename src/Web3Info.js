@@ -94,19 +94,27 @@ export default class Web3Info extends React.Component {
                             </div>
                         }}
                     </Web3Eth>
-                </div><p/>
+                </div>
+                <p/>
 
                 <div>Token:
                     <Token address={tokenAddress}
                            account={coinbase}>
-                        <span> Account: </span>
-                        <Account/>
-                        <span> - Balance: </span>
-                        <TokenBalance/>
-                        <span> - Symbol: </span>
-                        <TokenSymbol/>
+                        {({error, account, balance, symbol, address}) => {
+                            return <div>
+                                <span>Address: </span>
+                                <span>{address}</span>
+                                <span> - Account: </span>
+                                <Account account={account}/>
+                                <span> - Balance: </span>
+                                <TokenBalance balance={balance}/>
+                                <span> - Symbol: </span>
+                                <TokenSymbol symbol={symbol}/>
+                            </div>
+                        }}
                     </Token>
-                </div><p/>
+                </div>
+                <p/>
 
                 <div>Web3Eth (accounts):
                     <Web3Eth method='accounts'>
@@ -122,7 +130,8 @@ export default class Web3Info extends React.Component {
                             return null
                         }}
                     </Web3Eth>
-                </div><p/>
+                </div>
+                <p/>
 
                 <div>Web3Eth (gasPrice):
                     <Web3Eth method='gasPrice'>
