@@ -3,7 +3,7 @@ import web3 from './web3'
 
 import Web3Eth from './Web3Eth'
 
-import Account from './Account'
+import Address from './Address'
 import Balance from './Balance'
 import Token from './Token'
 import TokenSymbol from './TokenSymbol'
@@ -89,7 +89,7 @@ export default class Web3Info extends React.Component {
                     <Web3Eth method='coinbase'>
                         {({error, result}) => {
                             return <div>
-                                <div>Coinbase: <Account account={result}/></div>
+                                <div>Coinbase: <Address address={result}/></div>
                                 <div>Balance: <Balance address={result} unit='ether'/></div>
                             </div>
                         }}
@@ -105,7 +105,7 @@ export default class Web3Info extends React.Component {
                                 <span>Address: </span>
                                 <span>{token.address}</span>
                                 <span> - Account: </span>
-                                <Account account={account}/>
+                                <Address address={account}/>
                                 <span> - Balance: </span>
                                 <TokenBalance balance={balance}/>
                                 <span> - Symbol: </span>
@@ -121,7 +121,7 @@ export default class Web3Info extends React.Component {
                         {({error, result}) => {
                             if (result) {
                                 const accountsComponents = result.map((account) => {
-                                    return <div key={account}><Account account={account}/></div>;
+                                    return <div key={account}><Address address={account}/></div>;
                                 })
                                 return <div>
                                     <div>{accountsComponents}</div>
