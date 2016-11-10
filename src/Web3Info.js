@@ -58,23 +58,14 @@ export default class Web3Info extends React.Component {
                 resolve(result)
             })
         })
-        const accountsPromise = new Promise((resolve, reject) => {
-            web3.eth.getAccounts((error, result) => {
-                if (error) {
-                    return reject(error)
-                }
-                resolve(result)
-            })
-        })
 
-        const allReady = Promise.all([coinbasePromise, nodePromise, networkPromise, accountsPromise])
+        const allReady = Promise.all([coinbasePromise, nodePromise, networkPromise])
         allReady.then(results => {
-            const [ coinbase, nodeVersion, networkVersion, accounts ] = results
+            const [ coinbase, nodeVersion, networkVersion ] = results
             this.setState({
                 coinbase,
                 nodeVersion,
                 networkVersion,
-                accounts,
                 apiVersion: web3.version.api,
                 tokenAddress: this.getTokenAddress(networkVersion)
             })
@@ -88,36 +79,34 @@ export default class Web3Info extends React.Component {
     }
 
     render() {
-        const {apiVersion, nodeVersion, networkVersion, coinbase, accounts, tokenAddress} = this.state
-        const accountsComponents = accounts.map((account) => {
-            return <div key={account}><Account account={account}/> - <Balance account={account}/></div>;
-        })
+        const {apiVersion, nodeVersion, networkVersion, coinbase, tokenAddress} = this.state
+
         return (
             <div>
                 <h3>Web3 Info</h3>
-                <div>Coinbase:<Account account={coinbase}/></div>
-                <div>Balance:<Balance account={coinbase}/></div>
-                <p/>
 
                 <div>Web3Eth (coinbase):
                     <Web3Eth method='coinbase'>
                         {({error, result}) => {
                             return <div>
-                                <div>coinbase : {result}</div>
+                                <div>Coinbase: <Account account={result}/></div>
+                                <div>Balance: <Balance address={result} unit='ether'/></div>
                             </div>
                         }}
                     </Web3Eth>
-                </div>
+                </div><p/>
 
-                <div>Web3Eth (balance):
-                    <Web3Eth method='balance' address={coinbase}>
-                        {({error, result}) => {
-                            return <div>
-                                <div>balance(wei) : {result ? result.valueOf() : 'null'}</div>
-                            </div>
-                        }}
-                    </Web3Eth>
-                </div>
+                <div>Token:
+                    <Token address={tokenAddress}
+                           account={coinbase}>
+                        <span> Account: </span>
+                        <Account/>
+                        <span> - Balance: </span>
+                        <TokenBalance/>
+                        <span> - Symbol: </span>
+                        <TokenSymbol/>
+                    </Token>
+                </div><p/>
 
                 <div>Web3Eth (accounts):
                     <Web3Eth method='accounts'>
@@ -133,7 +122,7 @@ export default class Web3Info extends React.Component {
                             return null
                         }}
                     </Web3Eth>
-                </div>
+                </div><p/>
 
                 <div>Web3Eth (gasPrice):
                     <Web3Eth method='gasPrice'>
@@ -166,25 +155,7 @@ export default class Web3Info extends React.Component {
                 </div>
 
                 <p/>
-
-                <div>Token:
-                    <Token address={tokenAddress}
-                           account={coinbase}>
-                        <span> Account: </span>
-                        <Account/>
-                        <span> - Balance: </span>
-                        <TokenBalance/>
-                        <span> - Symbol: </span>
-                        <TokenSymbol/>
-                    </Token>
-                </div>
-
-                <p/>
-
-                <div>Accounts list</div>
-                {accountsComponents}
-                <p/>
-
+                
                 <div>api version : {apiVersion}</div>
                 <div>node version : {nodeVersion}</div>
                 <div>networkVersion : {networkVersion}</div>
