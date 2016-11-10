@@ -155,7 +155,7 @@ export default class Web3Info extends React.Component {
                 </div>
 
                 <p/>
-                
+
                 <div>api version : {apiVersion}</div>
                 <div>node version : {nodeVersion}</div>
                 <div>networkVersion : {networkVersion}</div>
