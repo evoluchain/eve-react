@@ -1,5 +1,4 @@
 import React, {PropTypes} from "react"
-import _ from 'lodash'
 import isEqual from 'lodash/isEqual'
 
 import web3 from './web3'
@@ -60,8 +59,8 @@ export default class Web3Eth extends React.Component {
     getPromise(props) {
         const {method, address} = props
 
-        // Start with uppercase
-        const _method = _.startCase(method).replace(/\s/g, "")
+        // accounts become Accounts
+        const _method = method.charAt(0).toUpperCase() + method.slice(1)
 
         // Case for get methods without params
         if (getMethods.includes(method)) {
