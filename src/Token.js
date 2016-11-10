@@ -97,10 +97,12 @@ export default class Token extends React.Component {
             return null
         }
         return this.props.children({
-            account: account,
-            balance: balance,
-            symbol: symbol,
-            address: address,
+            account,
+            balance,
+            token: {
+                address,
+                symbol
+            }
         })
 
     }
