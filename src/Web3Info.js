@@ -105,7 +105,7 @@ export default class Web3Info extends React.Component {
                                 <span>Address: </span>
                                 <span>{token.address}</span>
                                 <span> - Account: </span>
-                                <Address address={account}/>
+                                <Address address={coinbase}/>
                                 <span> - Balance: </span>
                                 <TokenBalance balance={balance}/>
                                 <span> - Symbol: </span>
