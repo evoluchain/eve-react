@@ -7,12 +7,10 @@ export default class Token extends React.Component {
         super(props)
         this.state = {
             contract: null,
-            balance: null
         }
     }
 
     static defaultProps = {
-        account: null,
         address: null,
     }
 
@@ -28,22 +26,13 @@ export default class Token extends React.Component {
                 that.setState({
                     contract: contract
                 })
-                callback(contract, props.account)
+                callback(contract)
             })
         }
     }
 
-    getBalance(contract, account) {
-        if (contract && account) {
-
-            const balancePromise = new Promise((resolve, reject) => {
-                contract.balanceOf.call(account, (error, result) => {
-                    if (error) {
-                        return reject(error)
-                    }
-                    resolve(result)
-                })
-            })
+    getBalance(contract) {
+        if (contract) {
 
             const symbolPromise = new Promise((resolve, reject) => {
                 contract.symbol.call((error, result) => {
@@ -72,12 +61,11 @@ export default class Token extends React.Component {
                 })
             })
 
-            const allReady = Promise.all([balancePromise, symbolPromise, namePromise, decimalsPromise])
+            const allReady = Promise.all([symbolPromise, namePromise, decimalsPromise])
 
             allReady.then(results => {
-                const [ balance, symbol, name, decimals ] = results
+                const [ symbol, name, decimals ] = results
                 this.setState({
-                    balance: balance.valueOf(),
                     symbol,
                     name,
                     decimals: decimals.valueOf()
@@ -90,17 +78,16 @@ export default class Token extends React.Component {
     }
 
     render() {
-        const {balance, symbol} = this.state
-        const {address, account} = this.props
+        const {name, symbol} = this.state
+        const {address} = this.props
 
         if (!this.props.children) {
             return null
         }
         return this.props.children({
-            account,
-            balance,
             token: {
                 address,
+                name,
                 symbol
             }
         })

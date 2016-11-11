@@ -98,16 +98,16 @@ export default class Web3Info extends React.Component {
                 <p/>
 
                 <div>Token:
-                    <Token address={tokenAddress}
-                           account={coinbase}>
-                        {({error, account, balance, token}) => {
+                    <Token address={tokenAddress}>
+                        {({error, token}) => {
                             return <div>
-                                <span>Address: </span>
+                                <span> {token.name}</span>
+                                <span> - Address: </span>
                                 <span>{token.address}</span>
                                 <span> - Account: </span>
                                 <Address address={coinbase}/>
                                 <span> - Balance: </span>
-                                <TokenBalance balance={balance}/>
+                                <TokenBalance tokenAddress={token.address} address={coinbase}/>
                                 <span> - Symbol: </span>
                                 <TokenSymbol symbol={token.symbol}/>
                             </div>
