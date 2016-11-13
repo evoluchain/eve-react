@@ -126,6 +126,7 @@ export default class Web3Eth extends React.Component {
             return null
         }
         return this.props.children({
+            error: this.state.error,
             result: this.state.result,
         })
     }
