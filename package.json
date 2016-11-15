@@ -1,6 +1,6 @@
 {
   "name": "eve-react",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "eve-react React components pack",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
