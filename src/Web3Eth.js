@@ -28,7 +28,7 @@ const values = ['defaultAccount', 'defaultBlock']
 
 const methods = getMethods.concat(getMethodsParam).concat(isMethods).concat(values)
 
-export default class Web3Eth extends React.Component {
+ class Web3Eth extends React.Component {
 
     static propTypes = {
         method: PropTypes.oneOf(methods),
@@ -131,3 +131,5 @@ export default class Web3Eth extends React.Component {
         })
     }
 }
+
+export default Web3Eth
