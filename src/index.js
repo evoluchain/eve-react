@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import web3 from './web3'
 
 import Web3Info from './Web3Info'
+import Web3Eth from './Web3Eth'
 
 import Address from './Address'
 import Balance from './Balance'
@@ -35,6 +36,7 @@ export default class Eve extends Component {
 
 export {web3 as web3}
 export {Web3Info as Web3Info}
+export {Web3Eth as Web3Eth}
 export {Address as Address}
 export {Balance as Balance}
 export {Token as Token}
