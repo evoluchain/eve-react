@@ -28,6 +28,8 @@ export default class Web3Info extends React.Component {
                 return '0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7'
             case '2' :
                 return '0x0a0960358dc58391b8a72062efe84201b47075c4'
+            case '3' :
+                return '0x32efcd2f3fe3434b760e4f8634dabbd0663e4f6f'
             default:
                 return null
         }

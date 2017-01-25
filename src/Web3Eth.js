@@ -59,7 +59,7 @@ const methods = getMethods.concat(getMethodsParam).concat(isMethods).concat(valu
     getPromise(props) {
         const {method, address} = props
 
-        // accounts become Accounts
+        // accounts becomes Accounts
         const _method = method.charAt(0).toUpperCase() + method.slice(1)
 
         // Case for get methods without params
@@ -68,7 +68,6 @@ const methods = getMethods.concat(getMethodsParam).concat(isMethods).concat(valu
             return new Promise((resolve, reject) => {
                 web3.eth[methodCall]((error, result) => {
                     if (error) {
-
                         return reject(error)
                     }
                     resolve(result)
@@ -111,7 +110,6 @@ const methods = getMethods.concat(getMethodsParam).concat(isMethods).concat(valu
         const ethPromise = this.getPromise(props)
         if (ethPromise) {
             ethPromise.then(result => {
-                console.log('result', result)
                 this.setState({
                     result
                 })

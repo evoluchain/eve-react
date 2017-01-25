@@ -23,10 +23,19 @@ export default class Token extends React.Component {
             // initiate contract for an address
             const that = this
             tokenContract.at(props.address, function (error, contract) {
-                that.setState({
-                    contract: contract
-                })
-                callback(contract)
+
+                console.log('Token ', contract.address)
+
+                if(error) {
+                    console.error(error)
+                    return
+                    // callback fires twice, we only want the second call when the contract is deployed
+                } else if(contract.address){
+                    that.setState({
+                        contract: contract
+                    })
+                    callback(contract)
+                }
             })
         }
     }
@@ -78,7 +87,7 @@ export default class Token extends React.Component {
     }
 
     render() {
-        const {name, symbol} = this.state
+        const {name, symbol, decimals} = this.state
         const {address} = this.props
 
         if (!this.props.children) {
@@ -88,7 +97,8 @@ export default class Token extends React.Component {
             token: {
                 address,
                 name,
-                symbol
+                symbol,
+                decimals
             }
         })
 
