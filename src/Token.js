@@ -23,9 +23,6 @@ export default class Token extends React.Component {
             // initiate contract for an address
             const that = this
             tokenContract.at(props.address, function (error, contract) {
-
-                console.log('Token ', contract.address)
-
                 if(error) {
                     console.error(error)
                     return
